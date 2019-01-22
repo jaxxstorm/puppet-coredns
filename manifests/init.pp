@@ -1,0 +1,19 @@
+# A description of what this class does
+#
+# @summary A short summary of the purpose of this class
+#
+# @example
+#   include coredns
+class coredns (
+  $version                  = $coredns::params::version,
+  $archive_path             = $coredns::params::archive_path,
+  $extract_path             = "/opt/coredns-${version}",
+  $install_method           = $coredns::install_method,
+){
+
+  anchor { 'coredns_first': }
+  ->
+  class { 'coredns::install': } ->
+  anchor { 'coredns_final': }
+
+}
