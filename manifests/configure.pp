@@ -6,6 +6,8 @@
 #   include coredns::configure
 class coredns::configure {
 
+  
+
 
   case $coredns::init_style {
     'systemd': {
@@ -16,6 +18,10 @@ class coredns::configure {
     default: {
       fail("I don't know how to create an init script for style ${coredns::init_style}")
     }
+  }
+
+	file { $coredns::config_dir:
+    ensure  => 'directory',
   }
 
 }
