@@ -6,7 +6,7 @@
 #   include coredns::params
 class coredns::params {
 
-  $version                  = 'v1.3.1'
+  $version                  = '1.3.1'
   $install_method           = 'url'
   $archive_path             = '/tmp/coredns.tgz'
 

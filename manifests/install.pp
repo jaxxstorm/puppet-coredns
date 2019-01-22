@@ -20,7 +20,7 @@ class coredns::install {
         ensure       => present,
         extract      => true,
         extract_path => $coredns::extract_path,
-        source       => "https://github.com/coredns/coredns/releases/download/${coredns::version}/coredns_${coredns::version}_linux_amd64.tgz",
+        source       => "https://github.com/coredns/coredns/releases/download/v${coredns::version}/coredns_${coredns::version}_linux_amd64.tgz",
         creates      => "${coredns::extract_path}/coredns"
       }
     }
