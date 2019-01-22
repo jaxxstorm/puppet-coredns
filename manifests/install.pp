@@ -23,6 +23,10 @@ class coredns::install {
         source       => "https://github.com/coredns/coredns/releases/download/v${coredns::version}/coredns_${coredns::version}_linux_amd64.tgz",
         creates      => "${coredns::extract_path}/coredns"
       }
+      -> file { "${coredns::bin_dir}/coredns":
+        ensure => link,
+        target => "${coredns::extract_path}/coredns";
+      }
     }
 
     'package': {

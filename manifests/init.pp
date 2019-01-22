@@ -5,6 +5,7 @@
 # @example
 #   include coredns
 class coredns (
+  $bin_dir                  = $coredns::params::bin_dir,
   $version                  = $coredns::params::version,
   $archive_path             = $coredns::params::archive_path,
   $extract_path             = "/opt/coredns-${version}",
