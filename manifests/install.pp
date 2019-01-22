@@ -54,7 +54,7 @@ class coredns::install {
     }
 
     if $coredns::coredns_user != 'root' {
-      file_capability { "${coredns::bin_dir}/coredns":
+      file_capability { "${coredns::extract_path}/coredns":
         ensure     => present,
         capability => 'cap_net_raw=ep',
       }
