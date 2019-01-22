@@ -49,7 +49,7 @@ class coredns::install {
 
     user {$coredns::coredns_user:
       ensure => present,
-      shell  => '/sbin/nologin',
+      shell  => $coredns::coredns_shell,
       system => true,
     }
 

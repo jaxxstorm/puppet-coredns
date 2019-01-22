@@ -24,6 +24,7 @@ class coredns::params {
       } else {
         $init_style  = 'systemd'
       }
+      $coredns_shell = '/sbin/nologin'
     }
     'Debian': {
       if versioncmp($::operatingsystemrelease, '8.0') < 0 {
@@ -31,6 +32,7 @@ class coredns::params {
       } else {
         $init_style = 'systemd'
       }
+      $coredns_shell = '/usr/sbin/nologin'
     }
     'Ubuntu': {
       if versioncmp($::operatingsystemrelease, '15.04') < 0 {
@@ -38,6 +40,7 @@ class coredns::params {
       } else {
         $init_style = 'systemd'
       }
+      $coredns_shell = '/usr/sbin/nologin'
     }
     default: { fail('Unsupported OS') }
   }

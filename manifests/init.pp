@@ -12,6 +12,7 @@ class coredns (
   $config_file              = $coredns::params::config_file,
   $coredns_user             = $coredns::params::coredns_user,
   $coredns_group            = $coredns::params::coredns_group,
+  $coredns_shell            = $coredns::params::coredns_shell,
   $extract_path             = "/opt/coredns-${version}",
   $init_style               = $coredns::params::init_style,
   $install_method           = $coredns::params::install_method,
