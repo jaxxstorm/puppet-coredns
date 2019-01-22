@@ -8,7 +8,7 @@ class coredns (
   $version                  = $coredns::params::version,
   $archive_path             = $coredns::params::archive_path,
   $extract_path             = "/opt/coredns-${version}",
-  $install_method           = $coredns::install_method,
+  $install_method           = $coredns::params::install_method,
 ){
 
   anchor { 'coredns_first': }
