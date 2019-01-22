@@ -3,6 +3,8 @@ Description=CoreDNS
 After=network.target
 
 [Service]
+User=<%= scope.lookupvar('coredns::user') %>
+Group=<%= scope.lookupvar('coredns::group') %>
 ExecStart=<%= scope.lookupvar('coredns::bin_dir') %>/coredns \
   -conf <%= scope.lookupvar('coredns::config_file') %>
 ExecReload=/bin/kill -HUP $MAINPID

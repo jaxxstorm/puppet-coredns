@@ -10,7 +10,10 @@ class coredns::params {
   $bin_dir                  = '/usr/local/bin'
   $config_dir               = '/etc/coredns'
   $config_file              = "${config_dir}/Corefile"
+  $coredns_user             = 'coredns'
+  $coredns_group            = 'coredns'
   $install_method           = 'url'
+  $manage_user              = true
   $version                  = '1.3.1'
 
 

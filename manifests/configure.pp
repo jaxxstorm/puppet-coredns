@@ -7,8 +7,6 @@
 class coredns::configure {
 
   
-
-
   case $coredns::init_style {
     'systemd': {
       systemd::unit_file{'coredns.service':
@@ -21,10 +19,14 @@ class coredns::configure {
   }
 
 	file { $coredns::config_dir:
-    ensure  => 'directory',
+    ensure => 'directory',
+    owner  => $coredns::coredns_user,
+    group  => $coredns::coredns_group,
   } ->
   file { $coredns::config_file:
     ensure  => present,
+    owner  => $coredns::coredns_user,
+    group  => $coredns::coredns_group,
     content => template('coredns/config.erb'),
   }
 

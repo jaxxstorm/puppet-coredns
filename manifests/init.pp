@@ -10,9 +10,12 @@ class coredns (
   $bin_dir                  = $coredns::params::bin_dir,
   $config_dir               = $coredns::params::config_dir,
   $config_file              = $coredns::params::config_file,
+  $coredns_user             = $coredns::params::coredns_user,
+  $coredns_group            = $coredns::params::coredns_group,
   $extract_path             = "/opt/coredns-${version}",
   $init_style               = $coredns::params::init_style,
   $install_method           = $coredns::params::install_method,
+  $manage_user              = $coredns::params::manage_user,
 
 ) inherits coredns::params {
 

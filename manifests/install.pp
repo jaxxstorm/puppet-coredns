@@ -15,6 +15,8 @@ class coredns::install {
 
       file { $coredns::extract_path:
         ensure => directory,
+        owner  => $coredns::coredns_owner,
+        group  => $coredns::coredns_group,
       }
       -> archive { $coredns::archive_path:
         ensure       => present,
@@ -37,6 +39,26 @@ class coredns::install {
       fail("The provided install method ${coredns::install_method} is invalid")
     }
 
+  }
+
+  if $coredns::manage_user {
+    group {$coredns::coredns_group:
+      ensure => present,
+      system => true,
+    }
+
+    user {$coredns::coredns_user:
+      ensure => present,
+      shell  => '/sbin/nologin',
+      system => true,
+    }
+
+    if $coredns::coredns_user != 'root' {
+      file_capability { "${coredns::bin_dir}/coredns":
+        ensure     => present,
+        capability => 'cap_net_raw=ep',
+      }
+    }
   }
 
 }
