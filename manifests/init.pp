@@ -9,6 +9,7 @@ class coredns (
   $archive_path             = $coredns::params::archive_path,
   $bin_dir                  = $coredns::params::bin_dir,
   $config_dir               = $coredns::params::config_dir,
+  $config_file              = $coredns::params::config_file,
   $extract_path             = "/opt/coredns-${version}",
   $init_style               = $coredns::params::init_style,
   $install_method           = $coredns::params::install_method,

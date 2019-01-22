@@ -22,6 +22,10 @@ class coredns::configure {
 
 	file { $coredns::config_dir:
     ensure  => 'directory',
+  } ->
+  file { $coredns::config_file:
+    ensure  => present,
+    content => template('coredns/config.erb'),
   }
 
 }

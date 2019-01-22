@@ -9,6 +9,7 @@ class coredns::params {
   $archive_path             = '/tmp/coredns.tgz'
   $bin_dir                  = '/usr/local/bin'
   $config_dir               = '/etc/coredns'
+  $config_file              = "${config_dir}/Corefile"
   $install_method           = 'url'
   $version                  = '1.3.1'
 

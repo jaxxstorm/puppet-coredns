@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=<%= scope.lookupvar('coredns::bin_dir') %>/coredns \
-  -conf <%= scope.lookupvar('coredns::config_dir') %>
+  -conf <%= scope.lookupvar('coredns::config_file') %>
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 LimitNOFILE=131072
