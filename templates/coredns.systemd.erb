@@ -1,0 +1,13 @@
+[Unit]
+Description=CoreDNS
+After=network.target
+
+[Service]
+ExecStart=<%= scope.lookupvar('coredns::bin_dir') %>/coredns \
+  -conf <%= scope.lookupvar('coredns::config_dir') %>
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+LimitNOFILE=131072
+
+[Install]
+WantedBy=multi-user.target

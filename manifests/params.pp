@@ -12,4 +12,30 @@ class coredns::params {
   $bin_dir                  = '/usr/local/bin'
 
 
+  case $::operatingsystem {
+    'RedHat', 'CentOS': {
+      if versioncmp($::operatingsystemrelease, '7.0') < 0 {
+        fail('OS is currently not supported')
+      } else {
+        $init_style  = 'systemd'
+      }
+    }
+    'Debian': {
+      if versioncmp($::operatingsystemrelease, '8.0') < 0 {
+        fail('OS is currently not supported')
+      } else {
+        $init_style = 'systemd'
+      }
+    }
+    'Ubuntu': {
+      if versioncmp($::operatingsystemrelease, '15.04') < 0 {
+        fail('OS is currently not supported')
+      } else {
+        $init_style = 'systemd'
+      }
+    }
+    default: { fail('Unsupported OS') }
+  }
+
+
 }
