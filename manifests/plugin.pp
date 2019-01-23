@@ -9,6 +9,10 @@ define coredns::plugin(
   Optional[String] $content = undef,
 ){
 
+  if ! $source and ! $content {
+    fail('Must specify either a source or a content for the plugi')
+  }
+
   file { "/etc/coredns/${title}.conf":
     ensure    => file,
     content   => $content,
