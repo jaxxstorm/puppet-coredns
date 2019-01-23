@@ -5,18 +5,18 @@
 # @example
 #   include coredns::plugin
 define coredns::plugin(
-  String $source,
-  String $content,
+  Optional[String] $source = undef,
+  Optional[String] $content = undef,
 ){
 
   file { "/etc/coredns/${title}.conf":
-    ensure  => file,
-    content => $content,
-    source  => $source,
+    ensure    => file,
+    content   => $content,
+    source    => $source,
     owner     => $coredns::coredns_user,
     group     => $coredns::coredns_group,
-    mode    => '0444',
-    require => Class['coredns::configure'],
+    mode      => '0444',
+    require   => Class['coredns::configure'],
   }
 
 }
