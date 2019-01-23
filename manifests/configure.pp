@@ -6,7 +6,7 @@
 #   include coredns::configure
 class coredns::configure {
 
-  
+
   case $coredns::init_style {
     'systemd': {
       systemd::unit_file{'coredns.service':
@@ -18,15 +18,17 @@ class coredns::configure {
     }
   }
 
-	file { $coredns::config_dir:
-    ensure => 'directory',
-    owner  => $coredns::coredns_user,
-    group  => $coredns::coredns_group,
-  } ->
-  file { $coredns::config_file:
+  file { $coredns::config_dir:
+    ensure  => 'directory',
+    owner   => $coredns::coredns_user,
+    group   => $coredns::coredns_group,
+    purge   => $coredns::purge_config,
+    recurse => $coredns::purge_config,
+  }
+  -> file { $coredns::config_file:
     ensure  => present,
-    owner  => $coredns::coredns_user,
-    group  => $coredns::coredns_group,
+    owner   => $coredns::coredns_user,
+    group   => $coredns::coredns_group,
     content => template('coredns/config.erb'),
   }
 

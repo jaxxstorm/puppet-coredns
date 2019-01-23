@@ -12,6 +12,7 @@ class coredns::params {
   $config_file              = "${config_dir}/Corefile"
   $coredns_user             = 'coredns'
   $coredns_group            = 'coredns'
+  $purge_config             = true
   $install_method           = 'url'
   $manage_user              = true
   $version                  = '1.3.1'
