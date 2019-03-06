@@ -18,6 +18,8 @@ class coredns (
   $init_style                       = $coredns::params::init_style,
   $install_method                   = $coredns::params::install_method,
   $manage_user                      = $coredns::params::manage_user,
+  $service_ensure                   = 'running',
+  $service_enable                   = true
 
 ) inherits coredns::params {
 
@@ -25,6 +27,7 @@ class coredns (
 
   -> class { 'coredns::install': }
   -> class { 'coredns::configure': }
+  -> class { 'coredns::service': }
   -> anchor { 'coredns_final': }
 
 }
